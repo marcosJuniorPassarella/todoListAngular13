@@ -8,6 +8,7 @@ import { Todo } from '../models/todo.model.ts';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
+  public mode = 'list';
   public todos: Todo[] = [];
   public title: string = 'Minhas tarefas';
   public form!: FormGroup;
@@ -57,10 +58,15 @@ export class AppComponent implements OnInit {
   saveInLocalStorage() {
     const data = JSON.stringify(this.todos);
     localStorage.setItem('todos', data);
+    this.mode = 'list';
   }
 
   getTodosInLocalStorage() {
     const data = localStorage.getItem('todos') as string;
     data ? (this.todos = JSON.parse(data)) : (this.todos = []);
+  }
+
+  changeMode(mode: string) {
+    this.mode = mode;
   }
 }
