@@ -41,14 +41,17 @@ export class AppComponent implements OnInit {
     const index = this.todos.indexOf(todo);
     // DELETA O ITEM DE NOSSA LISTA - ARRAY
     index !== -1 && this.todos.splice(index, 1);
+    this.saveInLocalStorage();
   }
 
   markAsDone(todo: Todo) {
     todo.done = true;
+    this.saveInLocalStorage();
   }
 
   markAsUndone(todo: Todo) {
     todo.done = false;
+    this.saveInLocalStorage();
   }
 
   saveInLocalStorage() {
@@ -58,6 +61,6 @@ export class AppComponent implements OnInit {
 
   getTodosInLocalStorage() {
     const data = localStorage.getItem('todos') as string;
-    this.todos = JSON.parse(data);
+    data ? (this.todos = JSON.parse(data)) : (this.todos = []);
   }
 }

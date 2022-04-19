@@ -1,4 +1,4 @@
-<h1>{{ title }}</h1>
+<h1 class="title">{{ title }}</h1>
 <p *ngIf="todos.length == 0">
   <small>Você ainda não possui nenhuma tarefa</small>
 </p>
@@ -23,6 +23,8 @@
     <small *ngIf="form.invalid && !form.pristine"
       >Este campo deve conter entre 3 e 50 caracteres</small
     >
-    <button (click)="addTodo()" [disabled]="form.invalid">Salvar</button>
+    <button class="button" (click)="addTodo()" [disabled]="form.invalid">
+      Salvar
+    </button>
   </fieldset>
 </form>
