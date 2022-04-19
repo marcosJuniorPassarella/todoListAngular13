@@ -1,4 +1,9 @@
 <h1>{{ title }}</h1>
 <ul *ngFor="let todo of todos">
-  <li>{{ todo }} - <button>Concluir</button> - <button>Remover</button></li>
+  <li>
+    {{ todo.id }}. {{ todo.title }} -
+    <button *ngIf="!todo.done">Concluir</button> -
+    <button>Remover</button>
+    <button *ngIf="todo.done">Refazer</button>
+  </li>
 </ul>
